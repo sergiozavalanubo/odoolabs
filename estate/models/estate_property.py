@@ -34,6 +34,20 @@ class EstateProperty(models.Model):
         string="Garden Orientation",
     )
 
+    state = fields.Selection(
+        selection=[
+            ("new", "New"),
+            ("offer_received", "Offer Received"),
+            ("offer_accepted", "Offer Accepted"),
+            ("sold", "Sold"),
+            ("canceled", "Canceled"),
+        ],
+        string="Status",
+        required=True,
+        copy=False,
+        default="new",
+    )
+    
     active = fields.Boolean("Active", default=True)
     
 
