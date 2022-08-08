@@ -37,7 +37,15 @@
                                     <field name="active"/>
                                 </group>
                             </group>
-                        </page>                        
+                        </page>
+                        <page string="Other Info">
+                            <group>
+                                <group>
+                                    <field name="user_id"/>
+                                    <field name="buyer_id"/>
+                                </group>
+                            </group>
+                        </page>
                     </notebook>
                 </sheet>
             </form>
