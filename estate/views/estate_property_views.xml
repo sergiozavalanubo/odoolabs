@@ -5,6 +5,11 @@
         <field name="model">estate.property</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button name="action_sold" type="object" string="Sold" states="new,offer_received,offer_accepted"/>
+                    <button name="action_cancel" type="object" string="Cancel" states="new,offer_received,offer_accepted,sold"/>
+                    <field name="state" widget="statusbar" statusbar_visible="new,offer_received,offer_accepted,sold"/>
+                </header>
                 <sheet>
                     <div class="oe_title">
                         <h1>
@@ -37,13 +42,11 @@
                                     <field name="garden_area"/>
                                     <field name="garden_orientation"/>
                                     <field name="total_area"/>
-                                    <field name="state"/>
-                                    <field name="active"/>
                                 </group>
                             </group>
                         </page>
                         <page string="Offers">
-                            <field name="offer_ids"/>
+                            <field name="offer_ids" attrs="{'readonly': [('state', 'in', ('offer_accepted', 'sold', 'canceled'))]}"/>
                         </page>
                         <page string="Other Info">
                             <group>
@@ -72,6 +75,7 @@
                 <field name="expected_price"/>
                 <field name="selling_price"/>
                 <field name="date_availability"/>
+                <field name="state"/>
             </tree>
         </field>
 </record>
