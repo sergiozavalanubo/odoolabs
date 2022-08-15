@@ -10,6 +10,7 @@ class EstateProperty(models.Model):
     _description = "Real Estate Property"
     _sql_constraints = [
         ("check_expected_price", "CHECK(expected_price > 0)", "The expected price must be positive"),
+        ('name_uniq', 'unique (name)', 'Name already exists!'),
     ]
 
     def _default_date_availability(self):
