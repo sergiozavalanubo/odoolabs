@@ -8,6 +8,9 @@ class EstateProperty(models.Model):
 
     _name = "estate.property"
     _description = "Real Estate Property"
+    _sql_constraints = [
+        ("check_expected_price", "CHECK(expected_price > 0)", "The expected price must be positive"),
+    ]
 
     def _default_date_availability(self):
         return fields.Date.context_today(self) + relativedelta(months=3)
