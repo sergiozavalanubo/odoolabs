@@ -92,7 +92,7 @@
                 <field name="postcode"/>
                 <field name="expected_price"/>
                 <field name="bedrooms"/>
-                <field name="living_area"/>
+                <field name="living_area" filter_domain="[('living_area', '>=', self)]"/>
                 <field name="facades"/>
                 <field name="tag_ids" widget="many2many_tags"/>
                 <filter string="Activo" name="active" domain="[('active', 'in', (True, False))]"/>
