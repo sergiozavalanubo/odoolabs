@@ -8,4 +8,5 @@ class EstatePropertyType(models.Model):
     _order = "name"
 
     # Fields
-    name = fields.Char("Name", required=True)    
+    name = fields.Char("Name", required=True)
+    color = fields.Integer("Color Index")
