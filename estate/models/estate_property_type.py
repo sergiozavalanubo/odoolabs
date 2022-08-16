@@ -5,6 +5,7 @@ class EstatePropertyType(models.Model):
 
     _name = "estate.property.type"
     _description = "Real Estate Property Type"
+    _order = "name"
     
     # Fields
     name = fields.Char("Name", required=True)
