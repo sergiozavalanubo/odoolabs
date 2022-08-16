@@ -18,7 +18,7 @@
         <field name="name">estate.property.offer.tree</field>
         <field name="model">estate.property.offer</field>
         <field name="arch" type="xml">
-            <tree string="Property Offers" editable="bottom">
+            <tree string="Property Offers" editable="bottom" decoration-success="state == 'accepted'" decoration-danger="state == 'refused'">
                 <field name="price"/>
                 <field name="partner_id"/>
                 <field name="validity"/>
