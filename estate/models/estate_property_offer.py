@@ -8,6 +8,7 @@ class EstatePropertyOffer(models.Model):
 
     _name = "estate.property.offer"
     _description = "Real Estate Property Offer"
+    _order = "price desc"
     _sql_constraints = [
         ("check_price", "CHECK(price > 0)", "The price must be positive"),
     ]
@@ -30,6 +31,11 @@ class EstatePropertyOffer(models.Model):
     # Many2one
     partner_id = fields.Many2one("res.partner", string="Partner", required=True)
     property_id = fields.Many2one("estate.property", string="Property", required=True)
+    
+    # For stat button:
+    property_type_id = fields.Many2one(
+        "estate.property.type", related="property_id.property_type_id", string="Property Type", store=True
+    )
 
      # Computed
     date_deadline = fields.Date(string="Deadline", compute="_compute_date_deadline", inverse="_inverse_date_deadline")
