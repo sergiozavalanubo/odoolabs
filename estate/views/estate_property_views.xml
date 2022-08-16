@@ -6,8 +6,9 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="action_sold" type="object" string="Sold" states="new,offer_received,offer_accepted"/>
-                    <button name="action_cancel" type="object" string="Cancel" states="new,offer_received,offer_accepted,sold"/>
+                    <button name="action_sold" type="object" string="Sold" states="new,offer_received"/>
+                    <button name="action_sold" type="object" string="Sold" states="offer_accepted" class="oe_highlight"/>
+                    <button name="action_cancel" type="object" string="Cancel" states="new,offer_received,offer_accepted"/>
                     <field name="state" widget="statusbar" statusbar_visible="new,offer_received,offer_accepted,sold"/>
                 </header>
                 <sheet>
@@ -75,7 +76,7 @@
                 <field name="expected_price"/>
                 <field name="selling_price"/>
                 <field name="date_availability"/>
-                <field name="state"/>
+                <field name="state" invisible="1"/>
             </tree>
         </field>
 </record>
@@ -94,7 +95,7 @@
                 <field name="facades"/>
                 <field name="tag_ids" widget="many2many_tags"/>
                 <filter string="Activo" name="active" domain="[('active', 'in', (True, False))]"/>
-                <filter string="Available" name="available" domain="[('state', 'in', ('new', 'offer_received'))]"/>
+                <filter string="Available" name="available" domain="[('state', 'in', ('new', 'offer_received', 'offer_accepted'))]"/>
                 <group expand="1" string="Group By">
                     <filter string="Postcode" name='postcode' context="{'group_by':'postcode'}"/>
                 </group>
