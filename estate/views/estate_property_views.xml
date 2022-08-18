@@ -108,15 +108,19 @@
         <field name="name">estate.property.kanban</field>
         <field name="model">estate.property</field>
         <field name="arch" type="xml">
-            <kanban>
-                <templates>
-                    <t t-name="kanban-box">
-                        <div class="oe_kanban_global_click">
-                            <field name="name"/>
-                        </div>
-                    </t>
-                </templates>
-            </kanban>
+        <kanban>
+            <field name="state"/>
+            <templates>
+                <t t-name="kanban-box">
+                    <div class="oe_kanban_global_click">
+                        <field name="name"/>
+                    </div>
+                    <div t-if="record.state.raw_value == 'new'">
+                        This is new!
+                    </div>
+                </t>
+            </templates>
+        </kanban>
         </field>
 </record>
 
