@@ -17,7 +17,7 @@ class EstateProperty(models.Model):
                     "journal_id": journal.id,
                     "invoice_line_ids": [
                         Command.create({
-                            "name": prop.name,
+                            "name": prop.name + " comission",
                             "quantity": 1.0,
                             "price_unit": prop.selling_price * 6.0 / 100.0,
                         }),
